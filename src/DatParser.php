@@ -18,10 +18,9 @@ class DatParser
      */
     protected $iterator;
 
-
     const SERVICES = 'servicestatus';
     const HOSTS = 'hoststatus';
-    const PROGRAMS = 'programstatus';
+    const PROGRAMS = 'programstatus'; // not used
 
     /**
      * @var array
@@ -49,7 +48,6 @@ class DatParser
         $section = [];
         $serviceStatus = [];
         $hostStatus = [];
-        $programStatus = [];
 
         foreach ($this->getIterator()->parse() as $line) {
             if (substr($line, strlen($line) - 1, 1) == "{") {
@@ -64,8 +62,6 @@ class DatParser
                     $serviceStatus[$section['host_name']][$section['service_description']] = $section;
                 } elseif ($sectionType == self::HOSTS) {
                     $hostStatus[$section["host_name"]] = $section;
-                } elseif ($sectionType == self::PROGRAMS) {
-                    $programStatus = $section;
                 }
 
                 $sectionType = '';
@@ -83,9 +79,8 @@ class DatParser
         }
 
         return [
-            "hosts"    => $hostStatus,
+            "machines" => $hostStatus,
             "services" => $serviceStatus,
-            "program"  => $programStatus,
         ];
     }
 
@@ -94,7 +89,6 @@ class DatParser
      */
     public function getIterator(): DatIterator
     {
-
         if (!$this->iterator) {
             throw Exception::noIteratorDefined();
         }

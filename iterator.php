@@ -15,4 +15,6 @@ $statusFile = "nagios/status.dat";
 $datIterator = new DatIterator($statusFile);
 $datParser = new DatParser($datIterator);
 
-var_dump($datParser->toArray());
+header("Content-type: application/json");
+
+echo(json_encode($datParser->toArray()));
