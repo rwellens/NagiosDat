@@ -1,7 +1,7 @@
 <?php
 
-use Dat2Json\DatIterator;
-use Dat2Json\DatParser;
+use NagiosDat\DatIterator;
+use NagiosDat\DatParser;
 
 include "vendor/autoload.php";
 
@@ -16,5 +16,6 @@ $datIterator = new DatIterator($statusFile);
 $datParser = new DatParser($datIterator);
 
 header("Content-type: application/json");
+
 
 echo(json_encode($datParser->toArray()));

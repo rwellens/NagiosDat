@@ -6,7 +6,7 @@
  * @file        DatIterator.php
  */
 
-namespace Dat2Json;
+namespace NagiosDat;
 
 /**
  * Class DatIterator
@@ -30,7 +30,7 @@ class DatIterator
 
 
     /**
-     * remove blank line and comment
+     * remove blank line and comments
      *
      * @return \Generator|void
      */

@@ -1,12 +1,12 @@
 <?php
 /**
- * DatParser.php
+ * DatParserTest.php
  *
  * @date        16/11/2018
- * @file        DatParser.php
+ * @file        DatParserTest.php
  */
 
-namespace Dat2Json;
+namespace NagiosDat;
 
 /**
  * Class DatParser
@@ -20,7 +20,7 @@ class DatParser
 
     const SERVICES = 'servicestatus';
     const HOSTS = 'hoststatus';
-    const PROGRAMS = 'programstatus'; // not used
+    const PROGRAMS = 'programstatus';
 
     /**
      * @var array
@@ -39,7 +39,9 @@ class DatParser
      */
     public function __construct(DatIterator $iterator = null)
     {
-        $this->iterator = $iterator;
+        if (isset($iterator)) {
+            $this->setIterator($iterator);
+        }
     }
 
     /**
@@ -52,6 +54,7 @@ class DatParser
         $section = [];
         $serviceStatus = [];
         $hostStatus = [];
+        $programStatus = [];
 
         foreach ($this->getIterator()->parse() as $line) {
             if (substr($line, strlen($line) - 1, 1) == "{") {
@@ -66,6 +69,8 @@ class DatParser
                     $serviceStatus[$section['host_name']][$section['service_description']] = $section;
                 } elseif ($sectionType == self::HOSTS) {
                     $hostStatus[$section["host_name"]] = $section;
+                } elseif ($sectionType == self::PROGRAMS) {
+                    $programStatus = $section;
                 }
 
                 $sectionType = '';
@@ -73,6 +78,7 @@ class DatParser
 
                 continue;
             }
+
 
             $key = substr($line, 0, strpos($line, "="));
             $value = substr($line, strpos($line, "=") + 1);
@@ -85,6 +91,7 @@ class DatParser
         return [
             "machines" => $hostStatus,
             "services" => $serviceStatus,
+            "program"  => $programStatus,
         ];
     }
 

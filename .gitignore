@@ -1,3 +1,4 @@
 .idea
 nagios
 vendor
+tests/coverage

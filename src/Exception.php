@@ -6,7 +6,7 @@
  * @file        Exception.php
  */
 
-namespace Dat2Json;
+namespace NagiosDat;
 
 /**
  * Exception
