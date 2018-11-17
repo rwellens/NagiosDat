@@ -25,7 +25,11 @@ class DatParser
     /**
      * @var array
      */
-    protected $sectionTypes = [self::HOSTS, self::SERVICES, self::PROGRAMS];
+    protected $sectionTypes = [
+        self::HOSTS,
+        self::SERVICES,
+        self::PROGRAMS,
+    ];
 
 
     /**
