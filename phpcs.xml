@@ -12,6 +12,6 @@
         <exclude name="Generic.Files.LineLength"/>
     </rule>
 
-    <file>src</file>
+    <file>src/</file>
     <exclude-pattern>*/test/*</exclude-pattern>
 </ruleset>

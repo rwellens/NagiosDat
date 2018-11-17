@@ -14,6 +14,9 @@ namespace NagiosDat;
 class Exception extends \Exception
 {
 
+    /**
+     * @return Exception
+     */
     public static function noIteratorDefined()
     {
         return new static('No Dat Iterator defined');
