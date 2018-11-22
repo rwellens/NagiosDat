@@ -1,5 +1,5 @@
 {
-  "name": "rwellens/NagiosDat",
+  "name": "rwellens/nagios-dat",
   "description": "Read nagios status.dat informations",
   "type": "library",
   "license": "GPL-3.0",
