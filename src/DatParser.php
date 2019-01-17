@@ -84,6 +84,11 @@ class DatParser
             $value = substr($line, strpos($line, "=") + 1);
 
             if (in_array($sectionType, $this->sectionTypes)) {
+
+                if(substr($value, 0, 1) == "{"){
+                    $value = json_decode($value);
+                }
+
                 $section[$key] = $value;
             }
         }

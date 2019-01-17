@@ -276,6 +276,7 @@ hoststatus {
 	is_flapping=0
 	percent_state_change=0.00
 	scheduled_downtime_depth=0
+	toto={"tutu":"toto"}
 	}
 
 hoststatus {
