@@ -86,7 +86,7 @@ class DatParser
             if (in_array($sectionType, $this->sectionTypes)) {
 
                 if(substr($value, 0, 1) == "{"){
-                    $value = json_decode($value);
+                    $value = json_decode($value, true);
                 }
 
                 $section[$key] = $value;
